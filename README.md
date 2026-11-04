@@ -1,6 +1,6 @@
-# Serbas for Vitrine
+# Sargas for Vitrine
 
-Conky-style widgets for [Vitrine](https://github.com/vitrine-widgets/vitrine), inspired by
+Conky-style widgets for [Vitrine](https://github.com/vitrine-org/vitrine), inspired by
 [Sargas](https://www.deviantart.com/zren/art/Conky-Sargas-601690886): a tall stacked date in
 Bebas Neue, open arc gauges and the weather told in a sentence, drawn straight on your wallpaper.
 
@@ -15,20 +15,20 @@ alignment, a soft text shadow and an optional acrylic card for busy wallpapers.
 
 ## Install
 
-Download `serbas-2.0.0.vitrine` from the [latest release](https://github.com/vitrine-widgets/serbas/releases/latest)
+Download `sargas-2.0.0.vitrine` from the [latest release](https://github.com/vitrine-org/sargas/releases/latest)
 and double-click it. Vitrine adds the widgets to its gallery.
 
-The Vitrine 1 theme lives on the [`v1`](https://github.com/vitrine-widgets/serbas/tree/v1) branch.
+The Vitrine 1 theme lives on the [`v1`](https://github.com/vitrine-org/sargas/tree/v1) branch.
 
 ## Build
 
 ```sh
 npm install
-npm run pack      # → serbas-2.0.0.vitrine
+npm run pack      # → sargas-2.0.0.vitrine
 ```
 
 `package.json` points `@vitrine/sdk` at `file:../../vitrine-sdk` for local builds; releases use
-`github:vitrine-widgets/sdk#v2.0.0`. Preview a widget with
+`github:vitrine-org/sdk#v2.0.0`. Preview a widget with
 `vitrine render dist gauges --cells 4x2 --scale 2 --out gauges.png`.
 
 ## License

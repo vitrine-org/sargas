@@ -1,5 +1,5 @@
 {
-  "name": "vitrine-serbas",
+  "name": "vitrine-sargas",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "dev": "vitrine-widget dev"
   },
   "dependencies": {
-    "@vitrine/sdk": "github:vitrine-widgets/sdk#v2.0.0",
+    "@vitrine/sdk": "github:vitrine-org/sdk#v2.0.0",
     "solid-js": "^1.9.18"
   }
 }
