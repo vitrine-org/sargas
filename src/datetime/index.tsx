@@ -2,6 +2,9 @@ import { formatDate, mount, useClock, useSettings, useSize } from "@vitrine/sdk"
 import { Surface, clamp, useLook, uses12h } from "../shared/look";
 import { DISPLAY } from "../shared/fonts";
 
+// The original themes are English: dates are never translated.
+const EN = "en-US";
+
 // Bebas Neue is condensed: an average glyph is about 0.4 em wide.
 const GLYPH = 0.41;
 const LINE = 0.9;
@@ -24,13 +27,13 @@ function DateTime() {
 
   const lines = () => {
     const d = now();
-    const v = [formatDate(d, "dddd"), formatDate(d, "D"), formatDate(d, "MMMM")];
-    if (s().showYear) v.unshift(formatDate(d, "YYYY"));
+    const v = [formatDate(d, "dddd", EN), formatDate(d, "D", EN), formatDate(d, "MMMM", EN)];
+    if (s().showYear) v.unshift(formatDate(d, "YYYY", EN));
     return v.map((t) => t.toUpperCase());
   };
-  const hours = () => formatDate(now(), h12() ? "h" : "HH");
-  const minutes = () => formatDate(now(), "mm");
-  const ampm = () => (h12() ? formatDate(now(), "A") || (now().getHours() < 12 ? "AM" : "PM") : "");
+  const hours = () => formatDate(now(), h12() ? "h" : "HH", EN);
+  const minutes = () => formatDate(now(), "mm", EN);
+  const ampm = () => (h12() ? formatDate(now(), "A", EN) || (now().getHours() < 12 ? "AM" : "PM") : "");
 
   const pad = () => (l().card ? 16 : 6);
   const fontSize = () => {

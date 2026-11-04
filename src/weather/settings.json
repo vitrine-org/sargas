@@ -1,49 +1,170 @@
 [
   {
     "title": "Weather",
+    "titles": {
+      "it": "Meteo",
+      "fr": "Météo",
+      "de": "Wetter",
+      "es": "Tiempo",
+      "pt-BR": "Clima",
+      "zh": "天气",
+      "ru": "Погода",
+      "ja": "天気",
+      "ko": "날씨"
+    },
     "settings": {
       "city": {
         "type": "string",
         "default": "London",
         "label": "City",
-        "description": "Any city name; the first match from Open-Meteo is used"
+        "labels": {
+          "it": "Città",
+          "fr": "Ville",
+          "de": "Stadt",
+          "es": "Ciudad",
+          "pt-BR": "Cidade",
+          "zh": "城市",
+          "ru": "Город",
+          "ja": "都市",
+          "ko": "도시"
+        },
+        "description": "Any city name; the first match from Open-Meteo is used",
+        "descriptions": {
+          "it": "Il nome di una città qualsiasi; si usa il primo risultato di Open-Meteo",
+          "fr": "N’importe quel nom de ville ; le premier résultat d’Open-Meteo est utilisé",
+          "de": "Ein beliebiger Städtename; es wird der erste Treffer von Open-Meteo verwendet",
+          "es": "Cualquier nombre de ciudad; se usa el primer resultado de Open-Meteo",
+          "pt-BR": "Qualquer nome de cidade; é usado o primeiro resultado do Open-Meteo",
+          "zh": "任意城市名称，使用 Open-Meteo 的第一个匹配结果",
+          "ru": "Любое название города; используется первый результат Open-Meteo",
+          "ja": "任意の都市名。Open-Meteo の最初の候補を使います",
+          "ko": "아무 도시 이름이나 입력하세요. Open-Meteo의 첫 번째 결과를 사용합니다"
+        }
       },
       "units": {
         "type": "string",
         "default": "celsius",
         "label": "Temperature unit",
+        "labels": {
+          "it": "Unità di temperatura",
+          "fr": "Unité de température",
+          "de": "Temperatureinheit",
+          "es": "Unidad de temperatura",
+          "pt-BR": "Unidade de temperatura",
+          "zh": "温度单位",
+          "ru": "Единица температуры",
+          "ja": "温度の単位",
+          "ko": "온도 단위"
+        },
         "options": [
           {
             "value": "celsius",
-            "label": "Celsius (°C)"
+            "label": "Celsius (°C)",
+            "labels": {
+              "it": "Celsius (°C)",
+              "fr": "Celsius (°C)",
+              "de": "Celsius (°C)",
+              "es": "Celsius (°C)",
+              "pt-BR": "Celsius (°C)",
+              "zh": "摄氏度 (°C)",
+              "ru": "Цельсий (°C)",
+              "ja": "摂氏 (°C)",
+              "ko": "섭씨 (°C)"
+            }
           },
           {
             "value": "fahrenheit",
-            "label": "Fahrenheit (°F)"
+            "label": "Fahrenheit (°F)",
+            "labels": {
+              "it": "Fahrenheit (°F)",
+              "fr": "Fahrenheit (°F)",
+              "de": "Fahrenheit (°F)",
+              "es": "Fahrenheit (°F)",
+              "pt-BR": "Fahrenheit (°F)",
+              "zh": "华氏度 (°F)",
+              "ru": "Фаренгейт (°F)",
+              "ja": "華氏 (°F)",
+              "ko": "화씨 (°F)"
+            }
           }
         ]
       },
       "showUpdated": {
         "type": "boolean",
         "default": true,
-        "label": "Show last update time"
+        "label": "Show last update time",
+        "labels": {
+          "it": "Mostra l’ora dell’ultimo aggiornamento",
+          "fr": "Afficher l’heure de la dernière mise à jour",
+          "de": "Zeit der letzten Aktualisierung anzeigen",
+          "es": "Mostrar la hora de la última actualización",
+          "pt-BR": "Mostrar a hora da última atualização",
+          "zh": "显示上次更新时间",
+          "ru": "Показывать время обновления",
+          "ja": "最終更新時刻を表示",
+          "ko": "마지막 업데이트 시간 표시"
+        }
       },
       "hourFormat": {
         "type": "string",
         "default": "auto",
         "label": "Time format",
+        "labels": {
+          "it": "Formato dell’ora",
+          "fr": "Format de l’heure",
+          "de": "Zeitformat",
+          "es": "Formato de hora",
+          "pt-BR": "Formato da hora",
+          "zh": "时间格式",
+          "ru": "Формат времени",
+          "ja": "時刻の形式",
+          "ko": "시간 형식"
+        },
         "options": [
           {
             "value": "auto",
-            "label": "Follow Windows"
+            "label": "Follow Windows",
+            "labels": {
+              "it": "Segui Windows",
+              "fr": "Comme Windows",
+              "de": "Wie in Windows",
+              "es": "Como Windows",
+              "pt-BR": "Seguir o Windows",
+              "zh": "跟随 Windows",
+              "ru": "Как в Windows",
+              "ja": "Windows に合わせる",
+              "ko": "Windows 따르기"
+            }
           },
           {
             "value": "12",
-            "label": "12-hour"
+            "label": "12-hour",
+            "labels": {
+              "it": "12 ore",
+              "fr": "12 heures",
+              "de": "12 Stunden",
+              "es": "12 horas",
+              "pt-BR": "12 horas",
+              "zh": "12 小时制",
+              "ru": "12-часовой",
+              "ja": "12 時間制",
+              "ko": "12시간제"
+            }
           },
           {
             "value": "24",
-            "label": "24-hour"
+            "label": "24-hour",
+            "labels": {
+              "it": "24 ore",
+              "fr": "24 heures",
+              "de": "24 Stunden",
+              "es": "24 horas",
+              "pt-BR": "24 horas",
+              "zh": "24 小时制",
+              "ru": "24-часовой",
+              "ja": "24 時間制",
+              "ko": "24시간제"
+            }
           }
         ]
       }
@@ -51,24 +172,90 @@
   },
   {
     "title": "Appearance",
+    "titles": {
+      "it": "Aspetto",
+      "fr": "Apparence",
+      "de": "Darstellung",
+      "es": "Apariencia",
+      "pt-BR": "Aparência",
+      "zh": "外观",
+      "ru": "Оформление",
+      "ja": "外観",
+      "ko": "모양"
+    },
     "settings": {
       "theme": {
         "type": "string",
         "default": "dark",
         "label": "Text color",
+        "labels": {
+          "it": "Colore del testo",
+          "fr": "Couleur du texte",
+          "de": "Textfarbe",
+          "es": "Color del texto",
+          "pt-BR": "Cor do texto",
+          "zh": "文字颜色",
+          "ru": "Цвет текста",
+          "ja": "文字の色",
+          "ko": "텍스트 색"
+        },
         "description": "Light text suits dark wallpapers, dark text light ones",
+        "descriptions": {
+          "it": "Il testo chiaro sta bene sugli sfondi scuri, quello scuro sugli sfondi chiari",
+          "fr": "Le texte clair convient aux fonds d’écran sombres, le texte foncé aux fonds clairs",
+          "de": "Heller Text passt zu dunklen Hintergründen, dunkler Text zu hellen",
+          "es": "El texto claro va bien con fondos oscuros; el oscuro, con fondos claros",
+          "pt-BR": "Texto claro combina com papéis de parede escuros; texto escuro, com claros",
+          "zh": "浅色文字适合深色壁纸，深色文字适合浅色壁纸",
+          "ru": "Светлый текст подходит для тёмных обоев, тёмный — для светлых",
+          "ja": "明るい文字は暗い壁紙に、暗い文字は明るい壁紙に向いています",
+          "ko": "밝은 텍스트는 어두운 배경 화면에, 어두운 텍스트는 밝은 배경 화면에 어울립니다"
+        },
         "options": [
           {
             "value": "dark",
-            "label": "Light (dark wallpaper)"
+            "label": "Light (dark wallpaper)",
+            "labels": {
+              "it": "Chiaro (sfondo scuro)",
+              "fr": "Clair (fond sombre)",
+              "de": "Hell (dunkler Hintergrund)",
+              "es": "Claro (fondo oscuro)",
+              "pt-BR": "Claro (papel de parede escuro)",
+              "zh": "浅色（深色壁纸）",
+              "ru": "Светлый (тёмные обои)",
+              "ja": "明るい（暗い壁紙）",
+              "ko": "밝게 (어두운 배경 화면)"
+            }
           },
           {
             "value": "light",
-            "label": "Dark (light wallpaper)"
+            "label": "Dark (light wallpaper)",
+            "labels": {
+              "it": "Scuro (sfondo chiaro)",
+              "fr": "Foncé (fond clair)",
+              "de": "Dunkel (heller Hintergrund)",
+              "es": "Oscuro (fondo claro)",
+              "pt-BR": "Escuro (papel de parede claro)",
+              "zh": "深色（浅色壁纸）",
+              "ru": "Тёмный (светлые обои)",
+              "ja": "暗い（明るい壁紙）",
+              "ko": "어둡게 (밝은 배경 화면)"
+            }
           },
           {
             "value": "auto",
-            "label": "Follow Windows theme"
+            "label": "Follow Windows theme",
+            "labels": {
+              "it": "Segui il tema di Windows",
+              "fr": "Suivre le thème de Windows",
+              "de": "Windows-Design folgen",
+              "es": "Seguir el tema de Windows",
+              "pt-BR": "Seguir o tema do Windows",
+              "zh": "跟随 Windows 主题",
+              "ru": "Как в теме Windows",
+              "ja": "Windows のテーマに合わせる",
+              "ko": "Windows 테마 따르기"
+            }
           }
         ]
       },
@@ -76,22 +263,88 @@
         "type": "string",
         "default": "#40C4FF",
         "label": "Accent color",
+        "labels": {
+          "it": "Colore d’accento",
+          "fr": "Couleur d’accentuation",
+          "de": "Akzentfarbe",
+          "es": "Color de énfasis",
+          "pt-BR": "Cor de destaque",
+          "zh": "强调色",
+          "ru": "Цвет акцента",
+          "ja": "アクセントカラー",
+          "ko": "강조 색"
+        },
         "description": "Hex color for arcs and highlighted text, or system for the Windows accent",
+        "descriptions": {
+          "it": "Colore esadecimale per archi e testo evidenziato, oppure system per l’accento di Windows",
+          "fr": "Couleur hexadécimale des arcs et du texte mis en avant, ou system pour l’accent de Windows",
+          "de": "Hex-Farbe für Bögen und hervorgehobenen Text, oder system für die Windows-Akzentfarbe",
+          "es": "Color hexadecimal para arcos y texto destacado, o system para el énfasis de Windows",
+          "pt-BR": "Cor hexadecimal dos arcos e do texto destacado, ou system para o destaque do Windows",
+          "zh": "圆弧和高亮文字的十六进制颜色，或填 system 使用 Windows 强调色",
+          "ru": "HEX-цвет дуг и выделенного текста или system для цвета акцента Windows",
+          "ja": "弧と強調テキストの 16 進カラー。system で Windows のアクセントカラー",
+          "ko": "호와 강조 텍스트의 16진수 색. system을 입력하면 Windows 강조 색"
+        },
         "pattern": "^(system|#[0-9a-fA-F]{6})$",
-        "patternMessage": "Use system or a hex color such as #40C4FF"
+        "patternMessage": "Use system or a hex color such as #40C4FF",
+        "patternMessages": {
+          "it": "Usa system o un colore esadecimale come #40C4FF",
+          "fr": "Utilisez system ou une couleur hexadécimale comme #40C4FF",
+          "de": "Verwende system oder eine Hex-Farbe wie #40C4FF",
+          "es": "Usa system o un color hexadecimal como #40C4FF",
+          "pt-BR": "Use system ou uma cor hexadecimal como #40C4FF",
+          "zh": "请填 system 或十六进制颜色，例如 #40C4FF",
+          "ru": "Укажите system или HEX-цвет, например #40C4FF",
+          "ja": "system または #40C4FF のような 16 進カラーを入力してください",
+          "ko": "system 또는 #40C4FF 같은 16진수 색을 입력하세요"
+        }
       },
       "background": {
         "type": "string",
         "default": "none",
         "label": "Background",
+        "labels": {
+          "it": "Sfondo",
+          "fr": "Arrière-plan",
+          "de": "Hintergrund",
+          "es": "Fondo",
+          "pt-BR": "Fundo",
+          "zh": "背景",
+          "ru": "Фон",
+          "ja": "背景",
+          "ko": "배경"
+        },
         "options": [
           {
             "value": "none",
-            "label": "None (on the wallpaper)"
+            "label": "None (on the wallpaper)",
+            "labels": {
+              "it": "Nessuno (sul wallpaper)",
+              "fr": "Aucun (sur le fond d’écran)",
+              "de": "Keiner (auf dem Hintergrundbild)",
+              "es": "Ninguno (sobre el fondo)",
+              "pt-BR": "Nenhum (sobre o papel de parede)",
+              "zh": "无（直接显示在壁纸上）",
+              "ru": "Нет (поверх обоев)",
+              "ja": "なし（壁紙の上）",
+              "ko": "없음 (배경 화면 위)"
+            }
           },
           {
             "value": "acrylic",
-            "label": "Acrylic card"
+            "label": "Acrylic card",
+            "labels": {
+              "it": "Scheda acrilica",
+              "fr": "Carte acrylique",
+              "de": "Acryl-Karte",
+              "es": "Tarjeta acrílica",
+              "pt-BR": "Cartão acrílico",
+              "zh": "亚克力卡片",
+              "ru": "Акриловая карточка",
+              "ja": "アクリル カード",
+              "ko": "아크릴 카드"
+            }
           }
         ]
       },
@@ -99,7 +352,29 @@
         "type": "boolean",
         "default": true,
         "label": "Text shadow",
+        "labels": {
+          "it": "Ombra del testo",
+          "fr": "Ombre du texte",
+          "de": "Textschatten",
+          "es": "Sombra del texto",
+          "pt-BR": "Sombra do texto",
+          "zh": "文字阴影",
+          "ru": "Тень текста",
+          "ja": "文字の影",
+          "ko": "텍스트 그림자"
+        },
         "description": "A soft shadow for legibility on bright or busy wallpapers",
+        "descriptions": {
+          "it": "Un’ombra morbida per leggere meglio su sfondi chiari o movimentati",
+          "fr": "Une ombre douce pour rester lisible sur les fonds clairs ou chargés",
+          "de": "Ein weicher Schatten für bessere Lesbarkeit auf hellen oder unruhigen Hintergründen",
+          "es": "Una sombra suave para leer mejor sobre fondos claros o recargados",
+          "pt-BR": "Uma sombra suave para facilitar a leitura em papéis de parede claros ou carregados",
+          "zh": "柔和的阴影，在明亮或复杂的壁纸上更易阅读",
+          "ru": "Мягкая тень для читаемости на светлых или пёстрых обоях",
+          "ja": "明るい壁紙や柄の多い壁紙でも読みやすくする柔らかな影",
+          "ko": "밝거나 복잡한 배경 화면에서도 잘 읽히도록 부드러운 그림자를 넣습니다"
+        },
         "visibleWhen": {
           "key": "background",
           "value": "none"
@@ -109,18 +384,62 @@
         "type": "string",
         "default": "left",
         "label": "Alignment",
+        "labels": {
+          "it": "Allineamento",
+          "fr": "Alignement",
+          "de": "Ausrichtung",
+          "es": "Alineación",
+          "pt-BR": "Alinhamento",
+          "zh": "对齐",
+          "ru": "Выравнивание",
+          "ja": "配置",
+          "ko": "정렬"
+        },
         "options": [
           {
             "value": "left",
-            "label": "Left"
+            "label": "Left",
+            "labels": {
+              "it": "Sinistra",
+              "fr": "Gauche",
+              "de": "Links",
+              "es": "Izquierda",
+              "pt-BR": "Esquerda",
+              "zh": "左对齐",
+              "ru": "По левому краю",
+              "ja": "左揃え",
+              "ko": "왼쪽"
+            }
           },
           {
             "value": "center",
-            "label": "Center"
+            "label": "Center",
+            "labels": {
+              "it": "Centro",
+              "fr": "Centre",
+              "de": "Mitte",
+              "es": "Centro",
+              "pt-BR": "Centro",
+              "zh": "居中",
+              "ru": "По центру",
+              "ja": "中央揃え",
+              "ko": "가운데"
+            }
           },
           {
             "value": "right",
-            "label": "Right"
+            "label": "Right",
+            "labels": {
+              "it": "Destra",
+              "fr": "Droite",
+              "de": "Rechts",
+              "es": "Derecha",
+              "pt-BR": "Direita",
+              "zh": "右对齐",
+              "ru": "По правому краю",
+              "ja": "右揃え",
+              "ko": "오른쪽"
+            }
           }
         ]
       }

@@ -4,10 +4,10 @@
 #   npm run build && py scripts/previews.py [--exe path\to\vitrine.exe] [widget ...]
 #
 # Sargas widgets are text drawn straight on the wallpaper: they render on a transparent
-# background with their text shadow, light text (dark theme) and the default accent, at the
+# background without text shadow, light text (dark theme) and the default accent, at the
 # default size from vitrine.json and scale 2. Weather renders with live data from Open-Meteo.
 
-SETTINGS = {"theme": "dark", "accent": "#40C4FF", "background": "none", "shadow": True}
+SETTINGS = {"theme": "dark", "accent": "#40C4FF", "background": "none", "shadow": False}
 EXTRA = {}  # per-widget settings on top of SETTINGS
 CARD_RADIUS = 0  # bare text: no card, keep the transparent background
 BACKDROP = None

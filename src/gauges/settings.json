@@ -1,24 +1,90 @@
 [
   {
     "title": "Gauges",
+    "titles": {
+      "it": "Indicatori",
+      "fr": "Jauges",
+      "de": "Anzeigen",
+      "es": "Indicadores",
+      "pt-BR": "Medidores",
+      "zh": "仪表",
+      "ru": "Индикаторы",
+      "ja": "ゲージ",
+      "ko": "게이지"
+    },
     "settings": {
       "showBattery": {
         "type": "boolean",
         "default": true,
         "label": "Show battery",
-        "description": "Only shown when the PC has a battery"
+        "labels": {
+          "it": "Mostra la batteria",
+          "fr": "Afficher la batterie",
+          "de": "Akku anzeigen",
+          "es": "Mostrar la batería",
+          "pt-BR": "Mostrar a bateria",
+          "zh": "显示电池",
+          "ru": "Показывать батарею",
+          "ja": "バッテリーを表示",
+          "ko": "배터리 표시"
+        },
+        "description": "Only shown when the PC has a battery",
+        "descriptions": {
+          "it": "Compare solo se il PC ha una batteria",
+          "fr": "Affichée uniquement si le PC a une batterie",
+          "de": "Nur sichtbar, wenn der PC einen Akku hat",
+          "es": "Solo aparece si el PC tiene batería",
+          "pt-BR": "Só aparece quando o PC tem bateria",
+          "zh": "仅在电脑有电池时显示",
+          "ru": "Показывается, только если у ПК есть батарея",
+          "ja": "PC にバッテリーがある場合のみ表示",
+          "ko": "PC에 배터리가 있을 때만 표시됩니다"
+        }
       },
       "showDisk": {
         "type": "boolean",
         "default": false,
-        "label": "Show disk"
+        "label": "Show disk",
+        "labels": {
+          "it": "Mostra il disco",
+          "fr": "Afficher le disque",
+          "de": "Laufwerk anzeigen",
+          "es": "Mostrar el disco",
+          "pt-BR": "Mostrar o disco",
+          "zh": "显示磁盘",
+          "ru": "Показывать диск",
+          "ja": "ディスクを表示",
+          "ko": "디스크 표시"
+        }
       },
       "drive": {
         "type": "string",
         "default": "C",
         "label": "Drive letter",
+        "labels": {
+          "it": "Lettera dell’unità",
+          "fr": "Lettre du lecteur",
+          "de": "Laufwerksbuchstabe",
+          "es": "Letra de unidad",
+          "pt-BR": "Letra da unidade",
+          "zh": "驱动器号",
+          "ru": "Буква диска",
+          "ja": "ドライブ文字",
+          "ko": "드라이브 문자"
+        },
         "pattern": "^[A-Za-z]$",
         "patternMessage": "A single drive letter, such as C",
+        "patternMessages": {
+          "it": "Una sola lettera di unità, come C",
+          "fr": "Une seule lettre de lecteur, comme C",
+          "de": "Ein einzelner Laufwerksbuchstabe, z. B. C",
+          "es": "Una sola letra de unidad, como C",
+          "pt-BR": "Uma única letra de unidade, como C",
+          "zh": "单个驱动器号，例如 C",
+          "ru": "Одна буква диска, например C",
+          "ja": "C のようなドライブ文字 1 つ",
+          "ko": "C처럼 드라이브 문자 하나"
+        },
         "visibleWhen": {
           "key": "showDisk",
           "value": true
@@ -27,12 +93,34 @@
       "showValues": {
         "type": "boolean",
         "default": false,
-        "label": "Show percentages"
+        "label": "Show percentages",
+        "labels": {
+          "it": "Mostra le percentuali",
+          "fr": "Afficher les pourcentages",
+          "de": "Prozente anzeigen",
+          "es": "Mostrar porcentajes",
+          "pt-BR": "Mostrar porcentagens",
+          "zh": "显示百分比",
+          "ru": "Показывать проценты",
+          "ja": "パーセントを表示",
+          "ko": "백분율 표시"
+        }
       },
       "interval": {
         "type": "number",
         "default": 2,
         "label": "Refresh every (seconds)",
+        "labels": {
+          "it": "Aggiorna ogni (secondi)",
+          "fr": "Actualiser toutes les (secondes)",
+          "de": "Aktualisieren alle (Sekunden)",
+          "es": "Actualizar cada (segundos)",
+          "pt-BR": "Atualizar a cada (segundos)",
+          "zh": "刷新间隔（秒）",
+          "ru": "Обновлять каждые (секунд)",
+          "ja": "更新間隔（秒）",
+          "ko": "새로 고침 간격(초)"
+        },
         "min": 1,
         "max": 30,
         "step": 1
@@ -41,24 +129,90 @@
   },
   {
     "title": "Appearance",
+    "titles": {
+      "it": "Aspetto",
+      "fr": "Apparence",
+      "de": "Darstellung",
+      "es": "Apariencia",
+      "pt-BR": "Aparência",
+      "zh": "外观",
+      "ru": "Оформление",
+      "ja": "外観",
+      "ko": "모양"
+    },
     "settings": {
       "theme": {
         "type": "string",
         "default": "dark",
         "label": "Text color",
+        "labels": {
+          "it": "Colore del testo",
+          "fr": "Couleur du texte",
+          "de": "Textfarbe",
+          "es": "Color del texto",
+          "pt-BR": "Cor do texto",
+          "zh": "文字颜色",
+          "ru": "Цвет текста",
+          "ja": "文字の色",
+          "ko": "텍스트 색"
+        },
         "description": "Light text suits dark wallpapers, dark text light ones",
+        "descriptions": {
+          "it": "Il testo chiaro sta bene sugli sfondi scuri, quello scuro sugli sfondi chiari",
+          "fr": "Le texte clair convient aux fonds d’écran sombres, le texte foncé aux fonds clairs",
+          "de": "Heller Text passt zu dunklen Hintergründen, dunkler Text zu hellen",
+          "es": "El texto claro va bien con fondos oscuros; el oscuro, con fondos claros",
+          "pt-BR": "Texto claro combina com papéis de parede escuros; texto escuro, com claros",
+          "zh": "浅色文字适合深色壁纸，深色文字适合浅色壁纸",
+          "ru": "Светлый текст подходит для тёмных обоев, тёмный — для светлых",
+          "ja": "明るい文字は暗い壁紙に、暗い文字は明るい壁紙に向いています",
+          "ko": "밝은 텍스트는 어두운 배경 화면에, 어두운 텍스트는 밝은 배경 화면에 어울립니다"
+        },
         "options": [
           {
             "value": "dark",
-            "label": "Light (dark wallpaper)"
+            "label": "Light (dark wallpaper)",
+            "labels": {
+              "it": "Chiaro (sfondo scuro)",
+              "fr": "Clair (fond sombre)",
+              "de": "Hell (dunkler Hintergrund)",
+              "es": "Claro (fondo oscuro)",
+              "pt-BR": "Claro (papel de parede escuro)",
+              "zh": "浅色（深色壁纸）",
+              "ru": "Светлый (тёмные обои)",
+              "ja": "明るい（暗い壁紙）",
+              "ko": "밝게 (어두운 배경 화면)"
+            }
           },
           {
             "value": "light",
-            "label": "Dark (light wallpaper)"
+            "label": "Dark (light wallpaper)",
+            "labels": {
+              "it": "Scuro (sfondo chiaro)",
+              "fr": "Foncé (fond clair)",
+              "de": "Dunkel (heller Hintergrund)",
+              "es": "Oscuro (fondo claro)",
+              "pt-BR": "Escuro (papel de parede claro)",
+              "zh": "深色（浅色壁纸）",
+              "ru": "Тёмный (светлые обои)",
+              "ja": "暗い（明るい壁紙）",
+              "ko": "어둡게 (밝은 배경 화면)"
+            }
           },
           {
             "value": "auto",
-            "label": "Follow Windows theme"
+            "label": "Follow Windows theme",
+            "labels": {
+              "it": "Segui il tema di Windows",
+              "fr": "Suivre le thème de Windows",
+              "de": "Windows-Design folgen",
+              "es": "Seguir el tema de Windows",
+              "pt-BR": "Seguir o tema do Windows",
+              "zh": "跟随 Windows 主题",
+              "ru": "Как в теме Windows",
+              "ja": "Windows のテーマに合わせる",
+              "ko": "Windows 테마 따르기"
+            }
           }
         ]
       },
@@ -66,22 +220,88 @@
         "type": "string",
         "default": "#40C4FF",
         "label": "Accent color",
+        "labels": {
+          "it": "Colore d’accento",
+          "fr": "Couleur d’accentuation",
+          "de": "Akzentfarbe",
+          "es": "Color de énfasis",
+          "pt-BR": "Cor de destaque",
+          "zh": "强调色",
+          "ru": "Цвет акцента",
+          "ja": "アクセントカラー",
+          "ko": "강조 색"
+        },
         "description": "Hex color for arcs and highlighted text, or system for the Windows accent",
+        "descriptions": {
+          "it": "Colore esadecimale per archi e testo evidenziato, oppure system per l’accento di Windows",
+          "fr": "Couleur hexadécimale des arcs et du texte mis en avant, ou system pour l’accent de Windows",
+          "de": "Hex-Farbe für Bögen und hervorgehobenen Text, oder system für die Windows-Akzentfarbe",
+          "es": "Color hexadecimal para arcos y texto destacado, o system para el énfasis de Windows",
+          "pt-BR": "Cor hexadecimal dos arcos e do texto destacado, ou system para o destaque do Windows",
+          "zh": "圆弧和高亮文字的十六进制颜色，或填 system 使用 Windows 强调色",
+          "ru": "HEX-цвет дуг и выделенного текста или system для цвета акцента Windows",
+          "ja": "弧と強調テキストの 16 進カラー。system で Windows のアクセントカラー",
+          "ko": "호와 강조 텍스트의 16진수 색. system을 입력하면 Windows 강조 색"
+        },
         "pattern": "^(system|#[0-9a-fA-F]{6})$",
-        "patternMessage": "Use system or a hex color such as #40C4FF"
+        "patternMessage": "Use system or a hex color such as #40C4FF",
+        "patternMessages": {
+          "it": "Usa system o un colore esadecimale come #40C4FF",
+          "fr": "Utilisez system ou une couleur hexadécimale comme #40C4FF",
+          "de": "Verwende system oder eine Hex-Farbe wie #40C4FF",
+          "es": "Usa system o un color hexadecimal como #40C4FF",
+          "pt-BR": "Use system ou uma cor hexadecimal como #40C4FF",
+          "zh": "请填 system 或十六进制颜色，例如 #40C4FF",
+          "ru": "Укажите system или HEX-цвет, например #40C4FF",
+          "ja": "system または #40C4FF のような 16 進カラーを入力してください",
+          "ko": "system 또는 #40C4FF 같은 16진수 색을 입력하세요"
+        }
       },
       "background": {
         "type": "string",
         "default": "none",
         "label": "Background",
+        "labels": {
+          "it": "Sfondo",
+          "fr": "Arrière-plan",
+          "de": "Hintergrund",
+          "es": "Fondo",
+          "pt-BR": "Fundo",
+          "zh": "背景",
+          "ru": "Фон",
+          "ja": "背景",
+          "ko": "배경"
+        },
         "options": [
           {
             "value": "none",
-            "label": "None (on the wallpaper)"
+            "label": "None (on the wallpaper)",
+            "labels": {
+              "it": "Nessuno (sul wallpaper)",
+              "fr": "Aucun (sur le fond d’écran)",
+              "de": "Keiner (auf dem Hintergrundbild)",
+              "es": "Ninguno (sobre el fondo)",
+              "pt-BR": "Nenhum (sobre o papel de parede)",
+              "zh": "无（直接显示在壁纸上）",
+              "ru": "Нет (поверх обоев)",
+              "ja": "なし（壁紙の上）",
+              "ko": "없음 (배경 화면 위)"
+            }
           },
           {
             "value": "acrylic",
-            "label": "Acrylic card"
+            "label": "Acrylic card",
+            "labels": {
+              "it": "Scheda acrilica",
+              "fr": "Carte acrylique",
+              "de": "Acryl-Karte",
+              "es": "Tarjeta acrílica",
+              "pt-BR": "Cartão acrílico",
+              "zh": "亚克力卡片",
+              "ru": "Акриловая карточка",
+              "ja": "アクリル カード",
+              "ko": "아크릴 카드"
+            }
           }
         ]
       },
@@ -89,7 +309,29 @@
         "type": "boolean",
         "default": true,
         "label": "Text shadow",
+        "labels": {
+          "it": "Ombra del testo",
+          "fr": "Ombre du texte",
+          "de": "Textschatten",
+          "es": "Sombra del texto",
+          "pt-BR": "Sombra do texto",
+          "zh": "文字阴影",
+          "ru": "Тень текста",
+          "ja": "文字の影",
+          "ko": "텍스트 그림자"
+        },
         "description": "A soft shadow for legibility on bright or busy wallpapers",
+        "descriptions": {
+          "it": "Un’ombra morbida per leggere meglio su sfondi chiari o movimentati",
+          "fr": "Une ombre douce pour rester lisible sur les fonds clairs ou chargés",
+          "de": "Ein weicher Schatten für bessere Lesbarkeit auf hellen oder unruhigen Hintergründen",
+          "es": "Una sombra suave para leer mejor sobre fondos claros o recargados",
+          "pt-BR": "Uma sombra suave para facilitar a leitura em papéis de parede claros ou carregados",
+          "zh": "柔和的阴影，在明亮或复杂的壁纸上更易阅读",
+          "ru": "Мягкая тень для читаемости на светлых или пёстрых обоях",
+          "ja": "明るい壁紙や柄の多い壁紙でも読みやすくする柔らかな影",
+          "ko": "밝거나 복잡한 배경 화면에서도 잘 읽히도록 부드러운 그림자를 넣습니다"
+        },
         "visibleWhen": {
           "key": "background",
           "value": "none"
@@ -99,18 +341,62 @@
         "type": "string",
         "default": "left",
         "label": "Alignment",
+        "labels": {
+          "it": "Allineamento",
+          "fr": "Alignement",
+          "de": "Ausrichtung",
+          "es": "Alineación",
+          "pt-BR": "Alinhamento",
+          "zh": "对齐",
+          "ru": "Выравнивание",
+          "ja": "配置",
+          "ko": "정렬"
+        },
         "options": [
           {
             "value": "left",
-            "label": "Left"
+            "label": "Left",
+            "labels": {
+              "it": "Sinistra",
+              "fr": "Gauche",
+              "de": "Links",
+              "es": "Izquierda",
+              "pt-BR": "Esquerda",
+              "zh": "左对齐",
+              "ru": "По левому краю",
+              "ja": "左揃え",
+              "ko": "왼쪽"
+            }
           },
           {
             "value": "center",
-            "label": "Center"
+            "label": "Center",
+            "labels": {
+              "it": "Centro",
+              "fr": "Centre",
+              "de": "Mitte",
+              "es": "Centro",
+              "pt-BR": "Centro",
+              "zh": "居中",
+              "ru": "По центру",
+              "ja": "中央揃え",
+              "ko": "가운데"
+            }
           },
           {
             "value": "right",
-            "label": "Right"
+            "label": "Right",
+            "labels": {
+              "it": "Destra",
+              "fr": "Droite",
+              "de": "Rechts",
+              "es": "Derecha",
+              "pt-BR": "Direita",
+              "zh": "右对齐",
+              "ru": "По правому краю",
+              "ja": "右揃え",
+              "ko": "오른쪽"
+            }
           }
         ]
       }

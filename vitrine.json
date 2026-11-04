@@ -1,12 +1,13 @@
 {
   "id": "dev.vitrine.sargas",
   "name": "Sargas",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "author": "Emanuele Frascella",
   "description": "Conky-style stacked date, arc gauges and weather in Bebas Neue",
   "homepage": "https://github.com/vitrine-org/sargas",
   "minEngine": "2.0.0",
   "fonts": ["assets/fonts/BebasNeue-Regular.ttf", "assets/fonts/Montserrat-Regular.ttf"],
+  "icon": "icon.png",
   "widgets": [
     {
       "id": "datetime",

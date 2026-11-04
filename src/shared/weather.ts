@@ -2,6 +2,9 @@
 import { createEffect, createSignal, on, onCleanup } from "solid-js";
 import { formatDate, useStorage } from "@vitrine/sdk";
 
+// The original themes are English: dates are never translated.
+const EN = "en-US";
+
 const REFRESH_MS = 15 * 60 * 1000;
 
 export interface Weather {
@@ -133,7 +136,7 @@ export function useWeather(settings: () => { city: string; units: string }) {
 
 /** "Updated at 19:56" / "Network unavailable · Updated at 19:56". */
 export function footer(w: Weather, error: WeatherError, h12: boolean): string {
-  const at = `Updated at ${formatDate(w.fetchedAt, h12 ? "h:mm A" : "HH:mm")}`;
+  const at = `Updated at ${formatDate(w.fetchedAt, h12 ? "h:mm A" : "HH:mm", EN)}`;
   return error ? `Network unavailable · ${at}` : at;
 }
 
