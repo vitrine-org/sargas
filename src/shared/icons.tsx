@@ -24,34 +24,34 @@ const P = {
 
 export type IconName = keyof typeof P;
 
-export function Icon(props: { name: IconName; size: number; color: string; stroke?: number }) {
+/** A path stroked over a wider, faint halo stroke: SVG's stand-in for a soft shadow. */
+function Stroke(props: { d: string; color: string; width: number; halo?: string | null }) {
+  return (
+    <>
+      {props.halo ? (
+        <path d={props.d} fill="none" stroke={props.halo} strokeWidth={props.width * 2.4} strokeLinecap="round" strokeLinejoin="round" />
+      ) : null}
+      <path d={props.d} fill="none" stroke={props.color} strokeWidth={props.width} strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  );
+}
+
+export function Icon(props: { name: IconName; size: number; color: string; stroke?: number; halo?: string | null }) {
   return (
     <svg width={props.size} height={props.size} viewBox="0 0 24 24">
-      <path
-        d={P[props.name]}
-        fill="none"
-        stroke={props.color}
-        strokeWidth={props.stroke ?? 1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <Stroke d={P[props.name]} color={props.color} width={props.stroke ?? 1.5} halo={props.halo} />
     </svg>
   );
 }
 
 /** Battery outline with 0–4 level bars or a charging bolt. */
-export function BatteryIcon(props: { level: number; charging: boolean; size: number; color: string; stroke?: number }) {
+export function BatteryIcon(props: { level: number; charging: boolean; size: number; color: string; stroke?: number; halo?: string | null }) {
   const bars = () => (props.level > 80 ? 4 : props.level > 60 ? 3 : props.level > 40 ? 2 : props.level > 20 ? 1 : 0);
   const d = () =>
-    props.charging
-      ? P.bolt
-      : ["M7 10v4", "M10 10v4", "M13 10v4", "M16 10v4"].slice(0, bars()).join(" ");
+    P.battery + " " + (props.charging ? P.bolt : ["M7 10v4", "M10 10v4", "M13 10v4", "M16 10v4"].slice(0, bars()).join(" "));
   return (
     <svg width={props.size} height={props.size} viewBox="0 0 24 24">
-      <path d={P.battery} fill="none" stroke={props.color} strokeWidth={props.stroke ?? 1.5} strokeLinecap="round" strokeLinejoin="round" />
-      {d() ? (
-        <path d={d()} fill="none" stroke={props.color} strokeWidth={props.stroke ?? 1.5} strokeLinecap="round" strokeLinejoin="round" />
-      ) : null}
+      <Stroke d={d()} color={props.color} width={props.stroke ?? 1.5} halo={props.halo} />
     </svg>
   );
 }

@@ -37,7 +37,7 @@ function Weather() {
         <>
       {w.data() ? (
         <>
-          <Icon name={weatherIcon(w.data()!.code, w.data()!.isDay)} size={Math.round(fs() * 2)} color={c.text} />
+          <Icon name={weatherIcon(w.data()!.code, w.data()!.isDay)} size={Math.round(fs() * 2)} color={c.text} halo={c.halo} />
           <text style={{ fontSize: fs(), lineHeight: 1.5, color: c.text, textAlign: textAlign() }}>
             {`Today weather in ${w.data()!.place}`}
             <br />
@@ -53,7 +53,7 @@ function Weather() {
         </>
       ) : (
         <>
-          <Icon name={w.error() ? "off" : "loader"} size={Math.round(fs() * 2)} color={c.text} />
+          <Icon name={w.error() ? "off" : "loader"} size={Math.round(fs() * 2)} color={c.text} halo={c.halo} />
           <text style={{ fontSize: fs(), color: c.text, textAlign: textAlign() }}>{emptyMessage(w.error(), w.query())}</text>
         </>
       )}

@@ -32,6 +32,9 @@ function Dial(props: { l: Look; g: Gauge; d: number; showValue: boolean }) {
   return (
     <view style={{ width: props.d, height: props.d, flexShrink: 0 }}>
       <svg width={props.d} height={props.d} viewBox={`0 0 ${props.d} ${props.d}`}>
+        {props.l.halo ? (
+          <path d={arc(c(), r(), -SWEEP / 2, SWEEP / 2)} fill="none" stroke={props.l.halo} strokeWidth={stroke() * 1.4} strokeLinecap="round" />
+        ) : null}
         <path d={arc(c(), r(), -SWEEP / 2, SWEEP / 2)} fill="none" stroke={props.l.track} strokeWidth={stroke()} strokeLinecap="round" />
         <path
           d={arc(c(), r(), -SWEEP / 2, SWEEP / 2)}
@@ -46,9 +49,9 @@ function Dial(props: { l: Look; g: Gauge; d: number; showValue: boolean }) {
       </svg>
       <view style={{ position: "absolute", inset: 0, alignItems: "center", justifyContent: "center" }}>
         {typeof props.g.icon === "string" ? (
-          <Icon name={props.g.icon} size={icon()} color={props.l.text} />
+          <Icon name={props.g.icon} size={icon()} color={props.l.text} halo={props.l.halo} />
         ) : (
-          <BatteryIcon level={props.g.icon.level} charging={props.g.icon.charging} size={icon()} color={props.l.text} />
+          <BatteryIcon level={props.g.icon.level} charging={props.g.icon.charging} size={icon()} color={props.l.text} halo={props.l.halo} />
         )}
       </view>
       <view style={{ position: "absolute", left: 0, bottom: 0, width: "100%", alignItems: "center", justifyContent: "center" }}>
