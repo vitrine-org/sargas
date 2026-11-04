@@ -1,9 +1,0 @@
-{
-  "theme": "dark",
-  "accentColor": "#40C4FF",
-  "alignment": "left",
-  "showWeather": false,
-  "weatherCity": "",
-  "temperatureUnit": "celsius",
-  "showBattery": true
-}

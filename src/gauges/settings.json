@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Gauges",
+    "settings": {
+      "showBattery": {
+        "type": "boolean",
+        "default": true,
+        "label": "Show battery",
+        "description": "Only shown when the PC has a battery"
+      },
+      "showDisk": {
+        "type": "boolean",
+        "default": false,
+        "label": "Show disk"
+      },
+      "drive": {
+        "type": "string",
+        "default": "C",
+        "label": "Drive letter",
+        "pattern": "^[A-Za-z]$",
+        "patternMessage": "A single drive letter, such as C",
+        "visibleWhen": {
+          "key": "showDisk",
+          "value": true
+        }
+      },
+      "showValues": {
+        "type": "boolean",
+        "default": false,
+        "label": "Show percentages"
+      },
+      "interval": {
+        "type": "number",
+        "default": 2,
+        "label": "Refresh every (seconds)",
+        "min": 1,
+        "max": 30,
+        "step": 1
+      }
+    }
+  },
+  {
+    "title": "Appearance",
+    "settings": {
+      "theme": {
+        "type": "string",
+        "default": "dark",
+        "label": "Text color",
+        "description": "Light text suits dark wallpapers, dark text light ones",
+        "options": [
+          {
+            "value": "dark",
+            "label": "Light (dark wallpaper)"
+          },
+          {
+            "value": "light",
+            "label": "Dark (light wallpaper)"
+          },
+          {
+            "value": "auto",
+            "label": "Follow Windows theme"
+          }
+        ]
+      },
+      "accent": {
+        "type": "string",
+        "default": "#40C4FF",
+        "label": "Accent color",
+        "description": "Hex color for arcs and highlighted text, or system for the Windows accent",
+        "pattern": "^(system|#[0-9a-fA-F]{6})$",
+        "patternMessage": "Use system or a hex color such as #40C4FF"
+      },
+      "background": {
+        "type": "string",
+        "default": "none",
+        "label": "Background",
+        "options": [
+          {
+            "value": "none",
+            "label": "None (on the wallpaper)"
+          },
+          {
+            "value": "acrylic",
+            "label": "Acrylic card"
+          }
+        ]
+      },
+      "shadow": {
+        "type": "boolean",
+        "default": true,
+        "label": "Text shadow",
+        "description": "A soft shadow for legibility on bright or busy wallpapers",
+        "visibleWhen": {
+          "key": "background",
+          "value": "none"
+        }
+      },
+      "align": {
+        "type": "string",
+        "default": "left",
+        "label": "Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    }
+  }
+]

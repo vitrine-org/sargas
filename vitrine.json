@@ -1,0 +1,42 @@
+{
+  "id": "dev.vitrine.serbas",
+  "name": "Serbas",
+  "version": "2.0.0",
+  "author": "Emanuele Frascella",
+  "description": "Conky-style stacked date, arc gauges and weather in Bebas Neue",
+  "homepage": "https://github.com/vitrine-widgets/serbas",
+  "minEngine": "2.0.0",
+  "fonts": ["assets/fonts/BebasNeue-Regular.ttf", "assets/fonts/Montserrat-Regular.ttf"],
+  "widgets": [
+    {
+      "id": "datetime",
+      "name": "Date & time",
+      "description": "Year, weekday, day, month and time stacked in Bebas Neue",
+      "entry": "src/datetime/index.tsx",
+      "settings": "src/datetime/settings.json",
+      "preview": "src/datetime/preview.png",
+      "size": { "default": [3, 4], "min": [2, 3], "max": [6, 8] },
+      "permissions": []
+    },
+    {
+      "id": "gauges",
+      "name": "Gauges",
+      "description": "CPU, memory and battery as open arcs",
+      "entry": "src/gauges/index.tsx",
+      "settings": "src/gauges/settings.json",
+      "preview": "src/gauges/preview.png",
+      "size": { "default": [4, 2], "min": [3, 1], "max": [6, 3] },
+      "permissions": ["system.cpu", "system.memory", "system.battery", "system.drives"]
+    },
+    {
+      "id": "weather",
+      "name": "Weather",
+      "description": "Today's weather in a sentence, from Open-Meteo",
+      "entry": "src/weather/index.tsx",
+      "settings": "src/weather/settings.json",
+      "preview": "src/weather/preview.png",
+      "size": { "default": [5, 2], "min": [4, 2], "max": [7, 3] },
+      "permissions": ["net:api.open-meteo.com", "net:geocoding-api.open-meteo.com"]
+    }
+  ]
+}

@@ -1,19 +1,16 @@
 {
-  "name": "vitrine-theme-default",
+  "name": "vitrine-serbas",
+  "version": "2.0.0",
   "private": true,
-  "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "build": "vitrine-widget build",
+    "pack": "vitrine-widget pack",
+    "dev": "vitrine-widget dev"
   },
   "dependencies": {
-    "@tabler/icons-react": "^3.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.0"
+    "@vitrine/sdk": "file:../../vitrine-sdk",
+    "solid-js": "^1.9.18"
   }
 }
