@@ -1,9 +1,9 @@
 {
   "id": "dev.vitrine.sargas",
   "name": "Sargas",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Emanuele Frascella",
-  "description": "Conky-style stacked date, calendar, arc gauges, network, time progress, to-dos and weather in Bebas Neue",
+  "description": "Conky-style stacked date, arc gauges and weather in Bebas Neue",
   "homepage": "https://github.com/vitrine-org/sargas",
   "minEngine": "2.0.0",
   "fonts": ["assets/fonts/BebasNeue-Regular.ttf", "assets/fonts/Montserrat-Regular.ttf"],
@@ -37,47 +37,6 @@
       "preview": "src/weather/preview.png",
       "size": { "default": [5, 2], "min": [4, 2], "max": [7, 3] },
       "permissions": ["net:api.open-meteo.com", "net:geocoding-api.open-meteo.com"]
-    },
-    {
-      "id": "calendar",
-      "name": "Calendar",
-      "description": "This month in Bebas Neue, today in the accent color",
-      "entry": "src/calendar/index.tsx",
-      "settings": "src/calendar/settings.json",
-      "preview": "src/calendar/preview.png",
-      "size": { "default": [3, 3], "min": [2, 2], "max": [5, 5] },
-      "permissions": []
-    },
-    {
-      "id": "network",
-      "name": "Network",
-      "description": "Download and upload speed with a live trace",
-      "entry": "src/network/index.tsx",
-      "settings": "src/network/settings.json",
-      "preview": "src/network/preview.png",
-      "size": { "default": [4, 2], "min": [3, 1], "max": [6, 3] },
-      "permissions": ["system.network"]
-    },
-    {
-      "id": "progress",
-      "name": "Time",
-      "description": "How much of the day, week, month and year is gone, as open arcs",
-      "entry": "src/progress/index.tsx",
-      "settings": "src/progress/settings.json",
-      "preview": "src/progress/preview.png",
-      "size": { "default": [4, 2], "min": [3, 1], "max": [6, 3] },
-      "permissions": []
-    },
-    {
-      "id": "todo",
-      "name": "To do",
-      "description": "Tasks under a stacked heading, checked off with a click",
-      "entry": "src/todo/index.tsx",
-      "settings": "src/todo/settings.json",
-      "preview": "src/todo/preview.png",
-      "size": { "default": [3, 3], "min": [2, 2], "max": [5, 5] },
-      "interactive": true,
-      "permissions": []
     }
   ]
 }
