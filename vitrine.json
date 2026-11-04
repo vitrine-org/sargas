@@ -1,7 +1,7 @@
 {
   "id": "dev.vitrine.sargas",
   "name": "Sargas",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Emanuele Frascella",
   "description": "Conky-style stacked date, arc gauges and weather in Bebas Neue",
   "homepage": "https://github.com/vitrine-org/sargas",
