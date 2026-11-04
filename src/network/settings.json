@@ -1,0 +1,113 @@
+[
+  {
+    "title": "Network",
+    "settings": {
+      "units": {
+        "type": "string",
+        "default": "bits",
+        "label": "Units",
+        "options": [
+          {
+            "value": "bits",
+            "label": "Bits per second (Mbps)"
+          },
+          {
+            "value": "bytes",
+            "label": "Bytes per second (MB/s)"
+          }
+        ]
+      },
+      "showTrace": {
+        "type": "boolean",
+        "default": true,
+        "label": "Show the trace",
+        "description": "The last minute of traffic, when the widget is tall enough"
+      },
+      "interval": {
+        "type": "number",
+        "default": 1,
+        "label": "Refresh every (seconds)",
+        "min": 1,
+        "max": 10,
+        "step": 1
+      }
+    }
+  },
+  {
+    "title": "Appearance",
+    "settings": {
+      "theme": {
+        "type": "string",
+        "default": "dark",
+        "label": "Text color",
+        "description": "Light text suits dark wallpapers, dark text light ones",
+        "options": [
+          {
+            "value": "dark",
+            "label": "Light (dark wallpaper)"
+          },
+          {
+            "value": "light",
+            "label": "Dark (light wallpaper)"
+          },
+          {
+            "value": "auto",
+            "label": "Follow Windows theme"
+          }
+        ]
+      },
+      "accent": {
+        "type": "string",
+        "default": "#40C4FF",
+        "label": "Accent color",
+        "description": "Hex color for arcs and highlighted text, or system for the Windows accent",
+        "pattern": "^(system|#[0-9a-fA-F]{6})$",
+        "patternMessage": "Use system or a hex color such as #40C4FF"
+      },
+      "background": {
+        "type": "string",
+        "default": "none",
+        "label": "Background",
+        "options": [
+          {
+            "value": "none",
+            "label": "None (on the wallpaper)"
+          },
+          {
+            "value": "acrylic",
+            "label": "Acrylic card"
+          }
+        ]
+      },
+      "shadow": {
+        "type": "boolean",
+        "default": true,
+        "label": "Text shadow",
+        "description": "A soft shadow for legibility on bright or busy wallpapers",
+        "visibleWhen": {
+          "key": "background",
+          "value": "none"
+        }
+      },
+      "align": {
+        "type": "string",
+        "default": "left",
+        "label": "Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    }
+  }
+]

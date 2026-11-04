@@ -100,8 +100,9 @@ export function Surface(props: { l: Look; shadow?: boolean; style?: Style; child
         ...(props.l.card
           ? {
               background: props.l.dark
-                ? "linear-gradient(160deg, rgba(48, 48, 48, 0.86), rgba(30, 30, 30, 0.80))"
-                : "linear-gradient(160deg, rgba(252, 252, 252, 0.88), rgba(240, 240, 240, 0.82))",
+                ? "linear-gradient(160deg, rgba(44, 44, 44, 0.72), rgba(28, 28, 28, 0.66))"
+                : "linear-gradient(160deg, rgba(252, 252, 252, 0.74), rgba(238, 238, 238, 0.68))",
+              backdropFilter: "blur(24px) saturate(1.4)",
               border: `1px solid ${props.l.dark ? "rgba(255, 255, 255, 0.09)" : "rgba(0, 0, 0, 0.07)"}`,
             }
           : {}),
