@@ -12,8 +12,10 @@ export interface Look {
   track: string;
   accent: string;
   onAccent: string;
-  /** CSS text-shadow on the wallpaper, null on a card or when turned off. */
+  /** CSS text-shadow on the wallpaper at scale 1, null on a card or when turned off. */
   shadow: string | null;
+  /** Colour of that text shadow, or null. */
+  shadowColor: string | null;
   /** Colour of the soft halo SVG strokes get under them (SVG has no shadow), or null. */
   halo: string | null;
 }
@@ -47,6 +49,12 @@ function mix(hex: string, t: number): string {
   );
 }
 
+/** The soft text shadow on the wallpaper, scaled with the layout (`k` = layout scale). */
+export function textShadow(dark: boolean, k: number): string {
+  const blur = clamp(8 * k, 2, 20).toFixed(1);
+  return dark ? `0 ${clamp(k, 0.5, 2).toFixed(1)}px ${blur}px rgba(0, 0, 0, 0.5)` : `0 0 ${blur}px rgba(255, 255, 255, 0.55)`;
+}
+
 export function look(s: LookSettings, system = { dark: true, accent: "#0078D4" }): Look {
   const dark = s.theme === "auto" ? system.dark : s.theme !== "light";
   let accent: string;
@@ -59,7 +67,8 @@ export function look(s: LookSettings, system = { dark: true, accent: "#0078D4" }
   const base = {
     dark,
     card,
-    shadow: shade ? (dark ? "0 1px 8px rgba(0, 0, 0, 0.5)" : "0 0 8px rgba(255, 255, 255, 0.55)") : null,
+    shadow: shade ? textShadow(dark, 1) : null,
+    shadowColor: shade ? (dark ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 0.55)") : null,
     halo: shade ? (dark ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.22)") : null,
     accent,
     onAccent: luminance(accent) > 0.35 ? "#000000" : "#FFFFFF",
@@ -87,7 +96,7 @@ export function uses12h(hourFormat: string): boolean {
  * Gaussian text shadow for legibility on any wallpaper; "acrylic" puts the content on a
  * Windows 11 card instead.
  */
-export function Surface(props: { l: Look; shadow?: boolean; style?: Style; children: (l: Look) => JSX.Element }) {
+export function Surface(props: { l: Look; k?: number; style?: Style; children: (l: Look) => JSX.Element }) {
   return (
     <view
       style={{
@@ -96,7 +105,7 @@ export function Surface(props: { l: Look; shadow?: boolean; style?: Style; child
         borderRadius: 8,
         overflow: "hidden",
         color: props.l.text,
-        ...(props.l.shadow ? { textShadow: props.l.shadow } : {}),
+        ...(props.l.shadow ? { textShadow: textShadow(props.l.dark, props.k ?? 1) } : {}),
         ...(props.l.card
           ? {
               background: props.l.dark

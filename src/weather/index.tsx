@@ -1,8 +1,21 @@
-import { mount, useSettings, useSize } from "@vitrine/sdk";
-import { Surface, clamp, useLook, uses12h } from "../shared/look";
+import { mount, useSettings } from "@vitrine/sdk";
+import { Surface, useLook, uses12h } from "../shared/look";
 import { Icon, weatherIcon } from "../shared/icons";
 import { describe, emptyMessage, footer, unitSymbol, useWeather } from "../shared/weather";
 import { BODY } from "../shared/fonts";
+import { MONTSERRAT_REGULAR as MONTSERRAT } from "../shared/metrics";
+import { flexAlign, legible, MIN_VALUE, textAlignOf, useFit, widest } from "../shared/fit";
+
+// Reference design, in the original theme's CSS pixels: a 32 px icon, then three 1rem lines of
+// Montserrat (line height 1.5) and a 0.707rem footer, 0.5rem apart.
+const ICON = 32;
+const GAP = 8;
+const BODY_SIZE = 16;
+const FOOT = 11.3;
+const LH = 1.5;
+const PAD = { bare: 8, card: 22 };
+// Lines measured while there is no reading yet, so the layout does not jump when it arrives.
+const SAMPLE = ["Today weather in London", "is partly cloudy with temperature 20°C", "it feels like 20°C, and humidity is 100%"];
 
 function Weather() {
   const s = useSettings({
@@ -17,47 +30,60 @@ function Weather() {
     hourFormat: "auto",
   });
   const l = useLook(s);
-  const size = useSize();
   const w = useWeather(s);
-
-  const pad = () => (l().card ? 14 : 6);
-  // About 22 em for the longest line, 8.5 em for icon + three lines + footer.
-  const fs = () => Math.floor(clamp(Math.min((size().width - pad() * 2) / 22, (size().height - pad() * 2) / 8.6), 9, 22));
-  const align = () => (s().align === "right" ? "flex-end" : s().align === "center" ? "center" : "flex-start");
-  const textAlign = () => (s().align === "right" ? "end" : s().align === "center" ? "center" : "start");
   const u = () => unitSymbol(s().units);
+  const d = () => w.data();
+
+  const lines = () =>
+    d()
+      ? [
+          `Today weather in ${d()!.place}`,
+          `is ${describe(d()!.code)} with temperature ${d()!.temp}${u()}`,
+          `it feels like ${d()!.feels}${u()}, and humidity is ${d()!.humidity}%`,
+        ]
+      : [emptyMessage(w.error(), w.query())];
+  const foot = () => (d() && (s().showUpdated || w.error()) ? footer(d()!, w.error(), uses12h(s().hourFormat)) : "");
+  const hasFoot = () => !d() || s().showUpdated || !!w.error();
+
+  const pad = () => (l().card ? PAD.card : PAD.bare);
+  const k = useFit((k) => {
+    const body = legible(BODY_SIZE, k, MIN_VALUE);
+    const small = legible(FOOT, k);
+    const textW = Math.max(widest(MONTSERRAT, d() ? lines() : SAMPLE, body), widest(MONTSERRAT, [foot()], small));
+    const h = ICON + GAP + 3 * body * LH + (hasFoot() ? GAP + small * LH : 0);
+    return { w: textW + 2 * pad(), h: h + 2 * pad() };
+  });
+  const body = () => legible(BODY_SIZE, k(), MIN_VALUE) * k();
+  const small = () => legible(FOOT, k()) * k();
 
   return (
     <Surface
       l={l()}
-      shadow={s().shadow}
-      style={{ flexDirection: "column", justifyContent: "center", alignItems: align(), padding: pad(), gap: fs() * 0.5, fontFamily: BODY }}
+      k={k()}
+      style={{
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: flexAlign(s().align),
+        padding: pad() * k(),
+        gap: GAP * k(),
+        fontFamily: BODY,
+      }}
     >
       {(c) => (
         <>
-      {w.data() ? (
-        <>
-          <Icon name={weatherIcon(w.data()!.code, w.data()!.isDay)} size={Math.round(fs() * 2)} color={c.text} halo={c.halo} />
-          <text style={{ fontSize: fs(), lineHeight: 1.5, color: c.text, textAlign: textAlign() }}>
-            {`Today weather in ${w.data()!.place}`}
-            <br />
-            {`is ${describe(w.data()!.code)} with temperature ${w.data()!.temp}${u()}`}
-            <br />
-            {`it feels like ${w.data()!.feels}${u()}, and humidity is ${w.data()!.humidity}%`}
+          <Icon
+            name={d() ? weatherIcon(d()!.code, d()!.isDay) : w.error() ? "off" : "loader"}
+            size={ICON * k()}
+            color={c.text}
+            halo={c.halo}
+          />
+          <text style={{ fontSize: body(), lineHeight: LH, color: c.text, textAlign: textAlignOf(s().align), whiteSpace: "nowrap" }}>
+            {lines().map((t, i) => (i ? [<br />, t] : t))}
           </text>
-          {s().showUpdated || w.error() ? (
-            <text style={{ fontSize: Math.max(9, Math.round(fs() * 0.707)), color: w.error() ? c.accent : c.text2, whiteSpace: "nowrap" }}>
-              {footer(w.data()!, w.error(), uses12h(s().hourFormat))}
-            </text>
+          {foot() ? (
+            <text style={{ fontSize: small(), lineHeight: LH, color: w.error() ? c.accent : c.text2, whiteSpace: "nowrap" }}>{foot()}</text>
           ) : null}
         </>
-      ) : (
-        <>
-          <Icon name={w.error() ? "off" : "loader"} size={Math.round(fs() * 2)} color={c.text} halo={c.halo} />
-          <text style={{ fontSize: fs(), color: c.text, textAlign: textAlign() }}>{emptyMessage(w.error(), w.query())}</text>
-        </>
-      )}
-            </>
       )}
     </Surface>
   );

@@ -1,10 +1,23 @@
 import { Index } from "solid-js";
-import { mount, useSettings, useSize, useSystem } from "@vitrine/sdk";
+import { mount, useSettings, useSystem } from "@vitrine/sdk";
 import { Surface, clamp, type Look, useLook } from "../shared/look";
 import { BatteryIcon, Icon, type IconName } from "../shared/icons";
 import { DISPLAY } from "../shared/fonts";
+import { flexAlign, legible, useFit } from "../shared/fit";
 
-const SWEEP = 240; // degrees, gap centred at the bottom as in the original theme
+// Reference design, in the original theme's CSS pixels: 88 px dials 8 px apart, a 240° arc of
+// radius 32 and stroke 8 (gap centred at the bottom), a 32 px icon in the middle and a 1rem
+// Bebas Neue label sitting in the gap of the arc.
+const SWEEP = 240;
+const D = 88;
+const R = 32;
+const STROKE = 8;
+const ICON = 32;
+const LABEL = 16;
+const BASELINE = 84; // label baseline from the top of the dial
+const GAP = 8;
+// The arcs leave 8 px of air inside the dial, so the outer padding is that much smaller.
+const PAD = { bare: 2, card: 14 };
 
 interface Gauge {
   label: string;
@@ -21,17 +34,19 @@ function arc(c: number, r: number, from: number, to: number): string {
   return `M ${pt(c, r, from)} A ${r} ${r} 0 ${to - from > 180 ? 1 : 0} 1 ${pt(c, r, to)}`;
 }
 
-function Dial(props: { l: Look; g: Gauge; d: number; showValue: boolean }) {
-  const stroke = () => Math.max(3, props.d / 11);
-  const r = () => props.d * (32 / 88);
-  const c = () => props.d / 2;
+function Dial(props: { l: Look; g: Gauge; k: number; label: number; showValue: boolean }) {
+  const d = () => D * props.k;
+  const stroke = () => STROKE * props.k;
+  const r = () => R * props.k;
+  const c = () => d() / 2;
   const v = () => clamp(props.g.value, 0, 100);
   const len = () => (r() * SWEEP * Math.PI) / 180;
-  const icon = () => Math.round(props.d * (32 / 88));
-  const label = () => (props.showValue ? `${props.g.label} ${Math.round(props.g.value)}%` : props.g.label);
+  const icon = () => ICON * props.k;
+  const fs = () => props.label * props.k;
+  const text = () => (props.showValue ? `${props.g.label} ${Math.round(props.g.value)}%` : props.g.label).toUpperCase();
   return (
-    <view style={{ width: props.d, height: props.d, flexShrink: 0 }}>
-      <svg width={props.d} height={props.d} viewBox={`0 0 ${props.d} ${props.d}`}>
+    <view style={{ width: d(), height: d(), flexShrink: 0 }}>
+      <svg width={d()} height={d()} viewBox={`0 0 ${d()} ${d()}`}>
         {props.l.halo ? (
           <path d={arc(c(), r(), -SWEEP / 2, SWEEP / 2)} fill="none" stroke={props.l.halo} strokeWidth={stroke() * 1.4} strokeLinecap="round" />
         ) : null}
@@ -54,10 +69,17 @@ function Dial(props: { l: Look; g: Gauge; d: number; showValue: boolean }) {
           <BatteryIcon level={props.g.icon.level} charging={props.g.icon.charging} size={icon()} color={props.l.text} halo={props.l.halo} />
         )}
       </view>
-      <view style={{ position: "absolute", left: 0, bottom: 0, width: "100%", alignItems: "center", justifyContent: "center" }}>
-        <text style={{ fontFamily: DISPLAY, fontSize: Math.max(10, Math.round(props.d * 0.18)), lineHeight: 1, color: props.l.text, whiteSpace: "nowrap" }}>
-          {label().toUpperCase()}
-        </text>
+      <view
+        style={{
+          position: "absolute",
+          left: -GAP * props.k,
+          right: -GAP * props.k,
+          top: BASELINE * props.k - 0.8 * fs(),
+          height: fs(),
+          justifyContent: "center",
+        }}
+      >
+        <text style={{ fontFamily: DISPLAY, fontSize: fs(), lineHeight: 1, color: props.l.text, whiteSpace: "nowrap" }}>{text()}</text>
       </view>
     </view>
   );
@@ -77,7 +99,6 @@ function Gauges() {
     interval: 2,
   });
   const l = useLook(s);
-  const size = useSize();
   const snap = useSystem(["cpu", "memory", "battery", "drives"], clamp(s().interval, 1, 30) * 1000);
 
   const gauges = (): Gauge[] => {
@@ -98,22 +119,22 @@ function Gauges() {
     return g;
   };
 
-  const pad = () => (l().card ? 12 : 4);
-  const gap = 8;
-  const dial = () => {
-    const n = gauges().length;
-    const byW = (size().width - pad() * 2 - gap * (n - 1)) / n;
-    return Math.floor(clamp(Math.min(byW, size().height - pad() * 2), 40, 200));
-  };
-  const justify = () => (s().align === "right" ? "flex-end" : s().align === "center" ? "center" : "flex-start");
+  const pad = () => (l().card ? PAD.card : PAD.bare);
+  const n = () => gauges().length;
+  // The row of dials at k = 1; the label stays legible and may then hang below the dial.
+  const k = useFit((k) => {
+    const below = Math.max(0, BASELINE + legible(LABEL, k) * 0.2 - D);
+    return { w: n() * D + (n() - 1) * GAP + 2 * pad(), h: D + below + 2 * pad() };
+  });
+  const label = () => legible(LABEL, k());
 
   return (
-    <Surface l={l()} shadow={s().shadow} style={{ flexDirection: "row", alignItems: "center", justifyContent: justify(), gap, padding: pad() }}>
-      {(c) => (
-        <>
-      <Index each={gauges()}>{(g) => <Dial l={c} g={g()} d={dial()} showValue={s().showValues} />}</Index>
-            </>
-      )}
+    <Surface
+      l={l()}
+      k={k()}
+      style={{ flexDirection: "row", alignItems: "center", justifyContent: flexAlign(s().align), gap: GAP * k(), padding: pad() * k() }}
+    >
+      {(c) => <Index each={gauges()}>{(g) => <Dial l={c} g={g()} k={k()} label={label()} showValue={s().showValues} />}</Index>}
     </Surface>
   );
 }
